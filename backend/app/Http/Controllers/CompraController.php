@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Coches;
+use App\Compra;
 use Illuminate\Http\Request;
 
-class CochesController extends Controller
+class CompraController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,13 +14,7 @@ class CochesController extends Controller
      */
     public function index()
     {
-        try{
-            $coches = Coches::all();
-            return $coches;
-
-        } catch (Exception $e) {
-            return abort(500, $e);
-        }
+        //
     }
 
     /**
@@ -33,31 +27,24 @@ class CochesController extends Controller
         //
     }
 
-    
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function store(Request $request)
     {
-        try{
-            $newCoche = new Coches;
-            $newCoche->matricula = $request->matricula;
-            $newCoche->modelo = $request->modelo;
-            $newCoche->precio = $request->precio;
-            $newCoche->marca_id = $request->marca_id;
-            $newCoche->save();
-
-            return $newCoche;
-
-        } catch (Exception $e) {
-            return abort(500, $e);
-        }
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Coches  $coches
+     * @param  \App\Compra  $compra
      * @return \Illuminate\Http\Response
      */
-    public function show(Coches $coches)
+    public function show(Compra $compra)
     {
         //
     }
@@ -65,10 +52,10 @@ class CochesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Coches  $coches
+     * @param  \App\Compra  $compra
      * @return \Illuminate\Http\Response
      */
-    public function edit(Coches $coches)
+    public function edit(Compra $compra)
     {
         //
     }
@@ -77,10 +64,10 @@ class CochesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Coches  $coches
+     * @param  \App\Compra  $compra
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Coches $coches)
+    public function update(Request $request, Compra $compra)
     {
         //
     }
@@ -88,10 +75,10 @@ class CochesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Coches  $coches
+     * @param  \App\Compra  $compra
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Coches $coches)
+    public function destroy(Compra $compra)
     {
         //
     }

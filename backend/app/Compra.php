@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Coches extends Model
+class Compra extends Model
 {
-
+    //
 }

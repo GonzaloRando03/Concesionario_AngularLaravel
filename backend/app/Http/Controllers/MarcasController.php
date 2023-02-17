@@ -4,80 +4,63 @@ namespace App\Http\Controllers;
 
 use App\Marcas;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class MarcasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        try{
+            $marcas = Marcas::all();
+            return $marcas;
+
+        } catch (Exception $e) {
+            return abort(500, $e);
+        }
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
         //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        try{
+            $newMarca = new Marcas;
+            $newMarca->nombre = $request->nombre;
+            $newMarca->pais = $request->pais;
+            $newMarca->save();
+
+            return $newMarca;
+
+        } catch (Exception $e) {
+            return abort(500, $e);
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Marcas  $marcas
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Marcas $marcas)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Marcas  $marcas
-     * @return \Illuminate\Http\Response
-     */
+
     public function edit(Marcas $marcas)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Marcas  $marcas
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, Marcas $marcas)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Marcas  $marcas
-     * @return \Illuminate\Http\Response
-     */
+
     public function destroy(Marcas $marcas)
     {
         //
