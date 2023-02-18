@@ -1,7 +1,7 @@
 <?php
-
 namespace App\Http\Controllers;
 
+use Firebase\JWT\JWT;
 use App\Cliente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -26,7 +26,7 @@ class ClienteController extends Controller
                 );
                 array_push($response, $cliente);
             }
-            return $response;
+            return response($response)->cookie('cookie1', 'valor1', 2);
 
         } catch (Exception $e) {
             return abort(500, $e);
@@ -57,9 +57,24 @@ class ClienteController extends Controller
             $newCliente = new Cliente;
             $newCliente->nombre = $request->nombre;
             $newCliente->email = $request->email;
-            $newCliente->gps = DB::raw($request->gps);
             $newCliente->password = $passwordCrypt;
+            if($request->gps){
+                $newCliente->gps = DB::raw($request->gps);
+            }
             $newCliente->save();
+            $time = time();
+
+            //creación del token
+            $token = array(
+                "iat"=> $time,
+                "exp"=> $time + (60*60*24),
+                "data"=> [
+                    "id"=> $newCliente->id,
+                    "nombre"=> $newCliente->nombre,
+                    "email"=> $newCliente->email
+                ]
+            );
+            $jwt = JWT::encode($token, "gonzalocars",'HS256');
 
             $response = array(
                 "id"=>$newCliente->id,
@@ -67,9 +82,10 @@ class ClienteController extends Controller
                 "email"=>$newCliente->email,
                 "gps"=>strval($request->gps),
                 "password"=>$newCliente->password,
+                "token"=> $jwt
             );
 
-            return $response;
+            return response($response)->cookie('token', $jwt, 5);
 
         } catch (Exception $e) {
             return abort(500, $e);
