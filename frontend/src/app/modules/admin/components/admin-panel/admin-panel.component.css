@@ -1,0 +1,42 @@
+section{
+    padding-top: 10vh;
+    color: var(--primary-color);
+}
+
+section h1 i{
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+button{
+    width: 30%;
+    border: 2px solid var(--primary-color);
+    color: var(--primary-color);
+    font-size: 18px;
+    padding: 10px 0px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-bottom: 3vh;
+    margin-top: 5vh;
+    -webkit-box-shadow: 10px 10px 7px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 10px 10px 7px -5px rgba(0,0,0,0.75);
+    box-shadow: 10px 10px 7px -5px rgba(0,0,0,0.75);
+}
+
+button:hover{
+    color: white;
+}
+
+button:last-child{
+    margin-left: 10%;
+}
+
+.exitRoot{
+    width: 70%;
+    translate: -7%;
+    margin-bottom: 26vh;
+}
+
+h1{
+    margin-left: 5%;
+}

@@ -1,0 +1,114 @@
+h1{
+    color: var(--primary-color);
+    margin-left: 5%;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+i{
+    margin-right: 10px;
+}
+
+.showCochesContainer{
+    padding-top: 10vh;
+}
+
+button{
+    background-color: grey;
+    color: white;
+}
+
+button:hover{
+    background-color: var(--primary-color);
+}
+
+.cochesHome div{
+    padding-left: 2%;
+}
+
+.cocheContainerHome{
+    width: 80%;
+    margin-left: 5%;
+    margin-top: 5vh;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+    display: flex;
+}
+
+.cochesHome .containerCoche:nth-child(even){
+    background-color: var(--bg-color-secondary);
+}
+
+.cocheContainerHome h2{
+    font-weight: 400;
+    font-size: 30px;
+    margin-top: 0px;
+}
+
+.cocheContainerHome div{
+    margin-left: 5%;
+    width: 70%;
+}
+
+.cocheImgHome{
+    width: 50%;
+    height: 30vh;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-left: 5%;
+}
+
+.blackBackground{
+    width: 100%;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    z-index: 11;
+    background-color: black;
+    opacity: .5;
+    transition: .5;
+}
+
+.confirmTarget{
+    z-index: 12;
+    width: 40%;
+    background-color: var(--bg-color);
+    position: fixed;
+    top: 0;
+    margin-top: 30vh;
+}
+
+.confirmTarget h3{
+    color: var(--primary-color);
+    margin-left: 5%;
+}
+
+p{
+    color: black;
+    width: 90%;
+    font-size: 18px;
+}
+
+.confirmTarget p {
+    margin-left: 5%
+}
+
+.confirmTarget div{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-bottom: 5vh;
+    margin-top: 4vh;
+}
+
+.confirmTarget button{
+    padding: 10px;
+}
+
+.deleteButton{
+    background-color: var(--primary-color);
+    color: white;
+    font-weight: 600;
+}

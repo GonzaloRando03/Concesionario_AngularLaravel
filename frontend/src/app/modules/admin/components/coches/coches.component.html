@@ -1,0 +1,65 @@
+<section>
+    <h1><i class="fa fa-wrench"></i>Administración de coches</h1>
+    <div class="center">
+        <table>
+            <thead>
+                    <th>ID</th>
+                    <th>Matrícula</th>
+                    <th>Modelo</th>
+                    <th>Precio</th>
+                    <th>Marca</th>
+                    <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of coches">
+                    <td>{{c.id}}</td>
+                    <td>{{c.matricula}}</td>
+                    <td>{{c.modelo}}</td>
+                    <td>{{c.precio}}€</td>
+                    <td>{{c.marca}}</td>
+                    <td>
+                        <i (click)="setConfirm(true, c.id)" class="fa fa-trash delete"></i>
+                        <i (click)="setUpdate(c.matricula, c.modelo, c.marca_id, c.id, c.precio)" class="fa fa-pencil update"></i>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngIf="!showCreateForm">
+                    <td class="addMarca" (click)="setCreateForm(true)" colspan="6">+ Añadir coche</td>
+                </tr>
+                <tr *ngIf="showCreateForm">
+                    <td colspan="6" class="addMarcaForm">
+                        <h3 class="color-primary">Añadir nuevo coche</h3>
+                        <form [formGroup]="cocheForm" (ngSubmit)="sendMarca()" class="flex-column">
+                            <input type="text" formControlName="matriculaCoche" placeholder="Matrícula">
+                            <input type="text" formControlName="modeloCoche" placeholder="Modelo">
+                            <input type="number" min="0" formControlName="precioCoche" placeholder="Precio">
+                            <select type="text" formControlName="marcaCoche">
+                                <option value="d" disabled selected>Selecciona una opción</option>
+                                <option *ngFor="let m of marcas" value="{{m.id}}">{{m.nombre}}</option>
+                            </select>
+                            <div class="flex center">
+                                <button *ngIf="!update" type="submit">Añadir coche</button>
+                                <button *ngIf="update" type="submit">Actualizar coche</button>  
+                                <button (click)="setCreateForm(false)">Cerrar formulario</button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>
+
+<div *ngIf="confirm" class="blackBackground"></div>
+<div *ngIf="confirm" class="center">
+    <div class="confirmTarget">
+        <h3>¿Quieres eliminar el coche?</h3>
+        <p>¿Estás seguro de que quieres eliminar el coche seleccionado? No podrás revertir los cambios.</p>
+        <div>
+            <button (click)="deleteMarca()" class="deleteButton">Eliminar</button>
+            <button (click)="setConfirm(false, 0)">Cancelar</button>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,97 @@
+.meContainer{
+    display: flex;
+    padding-top: 12vh;
+    margin-left: 10%;
+    width: 80%;
+}
+
+#map { 
+    height: 50vh; 
+    z-index: 1;
+}
+
+i{
+    font-size: 35px;
+    margin-right: 10px;
+}
+
+.meContainer h4{
+    margin-top: 0%;
+    margin-right: 10px;
+}
+
+button{
+    height: 30px;
+}
+
+.meContainer section{
+    margin-top: 2vh;
+}
+
+.userButtons{
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+}
+
+.userData{
+    width: 45%;
+    margin-right: 10%;
+    margin-bottom: 42vh;
+}
+
+.userButtons button{
+    margin-bottom: 2vh;
+}
+
+table{
+    border-collapse: collapse;
+    width: 130%;
+    text-align: center;
+}
+
+th{
+    background-color: var(--primary-color);
+    color: white;
+}
+
+th,td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.changeMailButtons button{
+    margin-left: 10%;
+    width: 35%;
+    margin-bottom: 10vh;
+}
+
+input{
+    border: 0px;
+    width: 85%;
+    margin-left: 6%;
+    height: 4vh;
+    background-color: var(--bg-color); 
+    border-bottom: 3px solid grey;
+    font-size: 18px;
+    outline: none;
+    color: black;
+    transition: .5s;
+    margin-bottom: 3vh;
+}
+
+input:active,
+input:focus{
+    border-bottom: 3px solid var(--primary-color);
+    color: var(--primary-color);
+}
+input:focus::placeholder{
+    color: var(--primary-color);
+}
+
+input::placeholder{
+    color: grey;
+    font-weight: 500;
+    font-size: 17px;
+    transition: .5s;
+}

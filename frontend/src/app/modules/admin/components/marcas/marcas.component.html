@@ -1,0 +1,59 @@
+<section>
+    <h1><i class="fa fa-wrench"></i>Administración de marcas</h1>
+    <div class="center">
+        <table>
+            <thead>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>País</th>
+                    <th>Fecha de contrato</th>
+                    <th>Nº Coches</th>
+                    <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let m of marcas">
+                    <td>{{m.id}}</td>
+                    <td>{{m.nombre}}</td>
+                    <td>{{m.pais}}</td>
+                    <td>{{m.created_at}}</td>
+                    <td>{{m.coches_totales}}</td>
+                    <td>
+                        <i (click)="setConfirm(true, m.id)" class="fa fa-trash delete"></i>
+                        <i (click)="setUpdate(m.nombre, m.pais, m.id)" class="fa fa-pencil update"></i>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngIf="!showCreateForm">
+                    <td class="addMarca" (click)="setCreateForm(true)" colspan="6">+ Añadir marca</td>
+                </tr>
+                <tr *ngIf="showCreateForm">
+                    <td colspan="6" class="addMarcaForm">
+                        <h3 class="color-primary">Añadir nueva marca</h3>
+                        <form [formGroup]="marcaForm" (ngSubmit)="sendMarca()" >
+                            <input type="text" formControlName="nombreMarca" placeholder="Nombre">
+                            <input type="text" formControlName="paisMarca" placeholder="País">
+                            <div class="flex center">
+                                <button *ngIf="!update" type="submit">Añadir marca</button>
+                                <button *ngIf="update" type="submit">Actualizar marca</button>  
+                                <button (click)="setCreateForm(false)">Cerrar formulario</button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>
+
+<div *ngIf="confirm" class="blackBackground"></div>
+<div *ngIf="confirm" class="center">
+    <div class="confirmTarget">
+        <h3>¿Quieres eliminar la marca?</h3>
+        <p>¿Estás seguro de que quieres eliminar la marca seleccionada? No podrás revertir los cambios.</p>
+        <div>
+            <button (click)="deleteMarca()" class="deleteButton">Eliminar</button>
+            <button (click)="setConfirm(false, 0)">Cancelar</button>
+        </div>
+    </div>
+</div>

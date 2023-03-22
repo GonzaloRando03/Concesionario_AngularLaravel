@@ -1,0 +1,10 @@
+div{
+    color: var(--primary-color);
+    padding-top: 8vh;
+    margin-left: 7%;
+    margin-bottom: 5vh;
+}
+
+h3{
+    margin-top: 5vh;
+}

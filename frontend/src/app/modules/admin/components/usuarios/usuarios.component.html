@@ -1,0 +1,58 @@
+<section>
+    <h1><i class="fa fa-wrench"></i>Administración de usuarios</h1>
+    <div class="center">
+        <table>
+            <thead>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>E-mail</th>
+                    <th>Fecha unión</th>
+                    <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of usuarios">
+                    <td>{{u.id}}</td>
+                    <td>{{u.nombre}}</td>
+                    <td>{{u.email}}</td>
+                    <td>{{u.created_at}}</td>
+                    <td>
+                        <i (click)="setConfirm(true, u.id)" class="fa fa-trash delete"></i>
+                        <i (click)="setUpdate(u.nombre, u.email, u.password , u.id)" class="fa fa-pencil update"></i>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngIf="!showCreateForm">
+                    <td class="addMarca" (click)="setCreateForm(true)" colspan="6">+ Añadir usuario</td>
+                </tr>
+                <tr *ngIf="showCreateForm">
+                    <td colspan="6" class="addMarcaForm">
+                        <h3 class="color-primary">Añadir nuevo usuario</h3>
+                        <form [formGroup]="userForm" (ngSubmit)="sendUser()">
+                            <input type="text" formControlName="nombreUsuario" placeholder="Nombre">
+                            <input type="text" formControlName="emailUsuario" placeholder="E-mail">
+                            <input type="password" formControlName="passwordUsuario" placeholder="Contraseña">
+                            <div class="flex center">
+                                <button *ngIf="!update" type="submit">Añadir usuario</button>
+                                <button *ngIf="update" type="submit">Actualizar usuario</button>  
+                                <button (click)="setCreateForm(false)">Cerrar formulario</button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>
+
+<div *ngIf="confirm" class="blackBackground"></div>
+<div *ngIf="confirm" class="center">
+    <div class="confirmTarget">
+        <h3>¿Quieres eliminar la marca?</h3>
+        <p>¿Estás seguro de que quieres eliminar la marca seleccionada? No podrás revertir los cambios.</p>
+        <div>
+            <button (click)="deleteUsuario()" class="deleteButton">Eliminar</button>
+            <button (click)="setConfirm(false, 0)">Cancelar</button>
+        </div>
+    </div>
+</div>

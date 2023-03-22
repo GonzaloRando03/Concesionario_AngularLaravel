@@ -1,0 +1,12 @@
+<div class="showMarcasContainer">
+    <h1><i class="fa fa-briefcase"></i>Marcas con las que trabajamos</h1>
+
+    <div class="center">
+        <section>
+            <div *ngFor="let m of marcas" class="marcaLogoContainer">
+                <img src={{m.image}} alt="Chevrolet">
+                <h2>{{m.nombre}}</h2>
+            </div>
+        </section>
+    </div>
+</div>

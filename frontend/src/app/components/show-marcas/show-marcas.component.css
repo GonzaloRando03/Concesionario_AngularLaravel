@@ -1,0 +1,36 @@
+.showMarcasContainer{
+    padding-top: 11vh;
+}
+
+.showMarcasContainer h1{
+    margin-left: 5%;
+    color: var(--primary-color);
+}
+
+.showMarcasContainer i{
+    margin-right: 10px;
+}
+
+section{
+    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.marcaLogoContainer{
+    width: 15%;
+    text-align: center;
+    padding: 1%;
+    transition: .5s;
+    margin-bottom: 3vh;
+}
+
+.marcaLogoContainer:hover{
+    background-color: var(--primary-color);
+    border-radius: 20px;
+}
+
+.marcaLogoContainer img{
+    width: 100%;
+}

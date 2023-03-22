@@ -1,0 +1,28 @@
+<header>
+  <div routerLink="/web" class="flex pointer">
+    <i class="fa fa-car"></i>
+    <h2>GonzaloCars</h2>
+  </div>
+  <nav>
+    <ul>
+      <li routerLink="/home">Home</li>
+      <li routerLink="/marcas">Marcas</li>
+      <li routerLink="/coches">Modelos</li>
+      <li *ngIf="userLogin" routerLink="/login">Login</li>
+      <li *ngIf="!userLogin && !rootUser " routerLink="/me">Mi usuario</li>
+      <li *ngIf="!userLogin && rootUser " routerLink="/admin/panel">Panel de administración</li>
+    </ul>
+  </nav>
+</header>
+<router-outlet></router-outlet>
+<footer>
+  <section class="center">
+    <div class="flex">
+      <i class="fa fa-car"></i>
+      <h2>GonzaloCars</h2>
+    </div>
+  </section>
+  <section>
+      Aplicación desarrollada por Gonzalo Rando Serna ( gonzalorando03@gmail.com )
+  </section>
+</footer>

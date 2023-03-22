@@ -1,0 +1,46 @@
+<div class="meContainer">
+    <section class="userData">
+        <h1 class="color-primary"><i class="fa fa-user"></i> {{nombre}}</h1>
+        <div >
+            <h4>E-mail: {{email}}</h4>
+            <div class="userButtons">
+                <button *ngIf="!showForm" (click)="setShowForm(true)" >Cambiar e-mail</button>
+                <form *ngIf="showForm" [formGroup]="mailForm" (ngSubmit)="submitMail()" >
+                    <input type="text" formControlName="email" placeholder="Nuevo e-mail">
+                    <div class="changeMailButtons">
+                        <button>Cambiar e-mail</button>
+                        <button (click)="setShowForm(false)" >Cancelar</button>
+                    </div>
+                </form>
+                <button (click)="cerrarSesion()">Cerrar sesión</button>
+            </div>
+        </div>
+        <div class="mapa color-primary">
+            <h2><i class="fa fa-location-arrow"></i>Localización del usuario</h2>
+            <div id="map"></div>
+        </div>
+        
+    </section>
+    <section>
+        <h2><i class="fa fa-briefcase"></i>Lista de compras</h2>
+        <h4 class="color-primary" *ngIf="coches.length <= 0">Todavía no has realizado ninguna compra</h4>
+        <table *ngIf="coches.length > 0">
+            <thead>
+                <th>Matrícula</th>
+                <th>Marca</th>
+                <th>Modelo</th>
+                <th>Precio</th>
+                <th>Fecha de compra</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of coches">
+                    <td>{{c.matricula}}</td>
+                    <td>{{c.nombre}}</td>
+                    <td>{{c.modelo}}</td>
+                    <td>{{c.precio}}€</td>
+                    <td>{{c.created_at}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+</div>

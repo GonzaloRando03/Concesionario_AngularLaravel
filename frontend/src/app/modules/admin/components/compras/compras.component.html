@@ -1,0 +1,68 @@
+<section>
+    <h1><i class="fa fa-wrench"></i>Administración de compras</h1>
+    <div class="center">
+        <table>
+            <thead>
+                    <th>ID</th>
+                    <th>Matrícula coche</th>
+                    <th>Modelo coche</th>
+                    <th>Precio coche</th>
+                    <th>Comprador</th>
+                    <th>Fecha de compra</th>
+                    <th>Actions</th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let c of compras">
+                    <td>{{c.id}}</td>
+                    <td>{{c.matricula_coche}}</td>
+                    <td>{{c.modelo}}</td>
+                    <td>{{c.precio}}€</td>
+                    <td>{{c.nombre}}</td>
+                    <td>{{c.created_at}}</td>
+                    <td>
+                        <i (click)="setConfirm(true, c.id)" class="fa fa-trash delete"></i>
+                        <i (click)="setUpdate(c.matricula_coche, c.usuario_id, c.id)" class="fa fa-pencil update"></i>
+                    </td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngIf="!showCreateForm">
+                    <td class="addMarca" (click)="setCreateForm(true)" colspan="7">+ Nueva Compra</td>
+                </tr>
+                <tr *ngIf="showCreateForm">
+                    <td colspan="7" class="addMarcaForm">
+                        <h3 class="color-primary">Añadir nueva compra</h3>
+                        <form [formGroup]="compraForm" (ngSubmit)="sendCompra()" class="flex-column">
+                            <select type="text" formControlName="matriculaCoche">
+                                <option value="d" disabled selected>Selecciona un coche</option>
+                                <option *ngFor="let c of coches" value="{{c.matricula}}">{{c.matricula}} {{c.modelo}}</option>
+                            </select>
+                            <select type="text" formControlName="idUsuario">
+                                <option value="d" disabled selected>Selecciona un comprador</option>
+                                <option *ngFor="let u of usuarios" value="{{u.id}}">{{u.nombre}}</option>
+                            </select>
+                            <div class="flex center">
+                                <button *ngIf="!update" type="submit">Añadir compra</button>
+                                <button *ngIf="update" type="submit">Actualizar compra</button>  
+                                <button (click)="setCreateForm(false)">Cerrar formulario</button>
+                            </div>
+                        </form>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</section>
+
+<div *ngIf="confirm" class="blackBackground"></div>
+<div *ngIf="confirm" class="center">
+    <div class="confirmTarget">
+        <h3>¿Quieres eliminar el coche?</h3>
+        <p>¿Estás seguro de que quieres eliminar el coche seleccionado? No podrás revertir los cambios.</p>
+        <div>
+            <button (click)="deleteCompra()" class="deleteButton">Eliminar</button>
+            <button (click)="setConfirm(false, 0)">Cancelar</button>
+        </div>
+    </div>
+</div>
+

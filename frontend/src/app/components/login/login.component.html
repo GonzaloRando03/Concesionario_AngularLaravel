@@ -1,0 +1,21 @@
+<div class="loginContainer">
+    <section>
+        <h2>Registrarse</h2>
+        <form [formGroup]="registerForm" (ngSubmit)="sendUsuario()">
+            <input type="text" formControlName="nombreRegister" placeholder="Nombre">
+            <input type="email" formControlName="emailRegister" placeholder="E-mail">
+            <input type="password" formControlName="passwordRegister" placeholder="Contraseña">
+            <input type="password" formControlName="repeatPasswordRegister" placeholder="Repite tu contraseña">
+            <button type="submit">Crear usuario</button>
+        </form>
+    </section>
+    <section>
+        <h2>Iniciar sesión</h2>
+        <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+            <input type="email" formControlName="emailLogin" placeholder=" E-mail">
+            <input type="password" formControlName="passwordLogin" placeholder=" Contraseña">
+            <button>Iniciar sesión</button>
+        </form>
+    </section>
+    
+</div>

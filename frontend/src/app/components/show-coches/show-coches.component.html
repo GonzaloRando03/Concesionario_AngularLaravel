@@ -1,0 +1,27 @@
+<div class="showCochesContainer">
+    <h1><i class="fa fa-car"></i>Modelos disponibles.</h1>
+    <section class="cochesHome">
+        <div *ngFor="let c of coches" class="containerCoche">
+            <div class="cocheContainerHome">
+                <img class="cocheImgHome" src={{c.image}} alt="imagen coche">
+                <div>
+                    <h2>{{c.marca}} {{c.modelo}}</h2>
+                    <p><b>Matrícula:</b> {{c.matricula}} <br> <b>Marca:</b> {{c.marca}} <br> <b>Modelo: </b> {{c.modelo}} <br> <b>Precio:</b> {{c.precio}}€ <br> <b>Estado: </b>{{c.estado}}</p>
+                    <button (click)="setConfirm(true, c.matricula)">Comprar</button>
+                </div>
+            </div>  
+        </div>
+    </section>
+</div>
+
+<div *ngIf="confirm" class="blackBackground"></div>
+<div *ngIf="confirm" class="center">
+    <div class="confirmTarget">
+        <h3>¿Quieres comprar el coche?</h3>
+        <p>Al realizar esta acción reservarás el coche y tendrás un máximo de siete días para ir al concesionario a realizar los trámites.</p>
+        <div>
+            <button (click)="sendCompra()" class="deleteButton">Comprar</button>
+            <button (click)="setConfirm(false, '')">Cancelar</button>
+        </div>
+    </div>
+</div>
